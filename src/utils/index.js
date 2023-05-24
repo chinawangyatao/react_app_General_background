@@ -1,2 +1,4 @@
 import { http } from "@/utils/http.js";
-export { http };
+import { setToken, getToken, removeToken } from "@/utils/token.js";
+
+export { http, setToken, getToken, removeToken };

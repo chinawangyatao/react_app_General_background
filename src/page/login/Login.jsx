@@ -1,8 +1,22 @@
-import { Button, Card, Checkbox, Form, Input, Space } from "antd";
+import { Button, Card, Checkbox, Form, Input, message, Space } from "antd";
+import { useStore } from "@/store/index.js";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
-  function onFinish(val) {
-    console.log(val);
+  const { loginStore } = useStore();
+  const navigate = useNavigate();
+  async function onFinish(val) {
+    await loginStore.setToken({
+      mobile: val.username,
+      code: val.password,
+      // mobile: 13811111111,
+      // code: 246810,
+    });
+    // 判断是不是有存下token
+    if (localStorage.getItem("token")) {
+      navigate("/", { replace: true });
+      message.success("登录成功");
+    }
   }
   return (
     <>
@@ -22,7 +36,9 @@ export function Login() {
               }}
             >
               <Form.Item
+                initialValue={"13811111111"}
                 name="username"
+                label={"用户名"}
                 rules={[
                   {
                     required: true,
@@ -33,7 +49,9 @@ export function Login() {
                 <Input size={"large"} placeholder={"请输入用户名"}></Input>
               </Form.Item>
               <Form.Item
+                initialValue={"246810"}
                 name="password"
+                label={"密码"}
                 rules={[
                   {
                     required: true,

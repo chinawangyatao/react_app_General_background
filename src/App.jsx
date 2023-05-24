@@ -4,6 +4,7 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from "./page/login/Login.jsx";
 import { Layout } from "@/page/layout/Layout.jsx";
+import { AuthComponent } from "@/components/AuthComponent.jsx";
 
 function App() {
   return (
@@ -12,7 +13,16 @@ function App() {
       <>
         <Routes>
           {/*    创建路由path和对应关系*/}
-          <Route path={"/"} element={<Layout />}></Route>
+
+          <Route
+            path={"/"}
+            element={
+              <AuthComponent>
+                <Layout />
+              </AuthComponent>
+            }
+          ></Route>
+
           <Route path={"/login"} element={<Login />}></Route>
         </Routes>
       </>

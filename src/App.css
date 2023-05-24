@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/*输入框的对齐*/
+.ant-row{
+    align-items: center;
+}

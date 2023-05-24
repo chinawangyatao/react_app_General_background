@@ -1,5 +1,5 @@
 import LoginStore from "@/store/login,Store.js";
-
+import React from "react";
 class RootStore {
   constructor() {
     this.loginStore = new LoginStore();
